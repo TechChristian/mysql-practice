@@ -9,3 +9,18 @@ from sales.funnel as fun
          left join temp_tables.ibge_genders as ibge
                    on lower(cus.first_name) = ibge.first_name -- lower transforma em minúsculas
 group by ibge.gender -- agrupa em duas colunas 'male' ou 'female' a contagem que se repete.
+
+
+-- Identifique de quais regiões são os clientes que mais visitam o site.
+-- obs: Utilizar a tabela tem_tables.regions
+
+select reg.region,
+       count(fun.visit_page_date) as visitas
+from sales.funnel as fun
+         left join sales.customers as cus
+                   on fun.customer_id = cus.customer_id
+         left join temp_tables.regions as reg
+                   on lower(cus.city) = lower(reg.city)
+                       and lower(cus.state) = lower(reg.state)
+group by reg.region
+order by visitas desc

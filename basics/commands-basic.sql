@@ -16,3 +16,10 @@ where first_name like 'ANA%' -- retorno "anailton, anac, anadir"
 
 -- IS NULL
 where 'nome tabela' is null -- retorna dados nulos.
+
+-- União simples de duas tabelas.
+
+select * from sales.products
+union all -- une todos os dados, os iguais e diferentes, sem eliminar duplicados.
+select * from temp_tables.products_2
+

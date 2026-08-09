@@ -37,7 +37,6 @@ group by brand
 order by visitas
 
 -- (Exercício 4) Identifique quais as lojas de veículo mais visitadas na tabela sales.funnel
-
 select * from sales.funnel
 select * from sales.stores
 
@@ -48,6 +47,7 @@ from sales.funnel as fun
                    on fun.store_id = stor.store_id
 group by stor.store_name
 order by visitas desc
+
 
 -- (Exercício 5) Identifique quantos clientes moram em cada tamanho de cidade (o porte da cidade
 -- consta na coluna "size" da tabela temp_tables.regions)
